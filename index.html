@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tina Brien — Software Engineer</title>
+  <style>
+    :root {
+      --accent: #2ec4b6;
+      --accent-dark: #1a9e93;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --hero-bg: #0f172a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--hero-bg);
+      z-index: 100;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 56px;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.3);
+    }
+
+    nav .brand {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #94a3b8;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--hero-bg);
+      color: #fff;
+      padding: 5rem 2rem 4rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-inner {
+      max-width: 800px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-photo-placeholder {
+      font-size: 3.5rem;
+      line-height: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .hero-text h1 span {
+      color: var(--accent);
+    }
+
+    .hero-text .tagline {
+      margin-top: 0.75rem;
+      font-size: 1.1rem;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    .hero-text .location {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .hero-links {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.55rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      text-decoration: none;
+    }
+
+    .btn-outline {
+      border: 1.5px solid #334155;
+      color: #94a3b8;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 4rem 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    section:nth-child(even) {
+      background: #fff;
+    }
+
+    .section-inner {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--border);
+      margin-left: 0.5rem;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-text {
+      font-size: 1.05rem;
+      color: #374151;
+      line-height: 1.75;
+    }
+
+    .about-text p + p {
+      margin-top: 1rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    .skill-card h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    /* ── EXPERIENCE ── */
+    .timeline {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 2rem;
+      position: relative;
+    }
+
+    .timeline-item + .timeline-item {
+      margin-top: 0.5rem;
+    }
+
+    .timeline-date {
+      text-align: right;
+      padding-top: 1.2rem;
+      padding-right: 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    .timeline-body {
+      border-left: 2px solid var(--border);
+      padding: 1.2rem 0 1.5rem 1.5rem;
+      position: relative;
+    }
+
+    .timeline-body::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 1.5rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .timeline-body h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .timeline-body .company {
+      font-size: 0.875rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.1rem;
+    }
+
+    .timeline-body ul {
+      margin-top: 0.75rem;
+      padding-left: 1.2rem;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .timeline-body ul li {
+      margin-bottom: 0.3rem;
+      line-height: 1.5;
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .edu-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+
+    .edu-card .edu-org {
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
+
+    .edu-card .edu-year {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent);
+      text-decoration: none;
+      color: var(--accent);
+    }
+
+    .contact-item svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--hero-bg);
+      color: #475569;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 620px) {
+      .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .hero-text h1 { font-size: 1.8rem; }
+
+      nav ul { display: none; }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-date {
+        text-align: left;
+        padding-top: 0;
+        padding-bottom: 0.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <span class="brand">Tina Brien</span>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-photo">
+        <!-- Swap the line below for: <img src="headshot.jpg" alt="Tina Brien" /> once you have your photo -->
+        <img src="headshot.png" alt="Tina Brien" />
+      </div>
+      <div class="hero-text">
+        <h1>Tina <span>Brien</span></h1>
+        <p class="tagline">Software Engineer · People Leader · Tech with Purpose</p>
+        <p class="location">📍 Southend, Essex, UK</p>
+        <div class="hero-links">
+          <a href="mailto:tina.r.brien@gmail.com" class="btn btn-primary">Get in touch</a>
+          <a href="#experience" class="btn btn-outline">View experience ↓</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <h2 class="section-title">About me</h2>
+      <p class="section-subtitle">Engineer, community builder, lifelong learner</p>
+      <div class="about-text">
+        <p>
+          I'm a Software Engineer at NatWest Group, working within Engineering Platforms on the
+          intersection of technology and business outcomes. My day-to-day spans data engineering,
+          microservice development, CI/CD automation, and executive reporting — but what really drives
+          me is the people side: building communities, developing junior talent, and making engineering
+          more accessible.
+        </p>
+        <p>
+          Before moving into tech full-time, I ran my own business delivering bookkeeping and digital
+          services to SMEs, spent time managing operations across 20 healthcare sites, and even taught
+          floristry at college. That breadth isn't a quirk — it's given me commercial awareness,
+          people skills, and adaptability that purely technical backgrounds can lack.
+        </p>
+        <p>
+          I'm currently deepening my expertise in cloud-native development, SAFe product ownership, and local agentic AI —
+          always curious, always building.
+
+          I made Clawdia, and Clawdia made me this site. 
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <h2 class="section-title">Skills</h2>
+      <p class="section-subtitle">Technical and people capabilities</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Languages</h3>
+          <div class="skill-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Java</span>
+            <span class="tag">SQL</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Data & Analytics</h3>
+          <div class="skill-tags">
+            <span class="tag">Snowflake</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">PowerBI</span>
+            <span class="tag">GraphQL</span>
+            <span class="tag">API integrations</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>DevOps & CI/CD</h3>
+          <div class="skill-tags">
+            <span class="tag">GitLab CI/CD</span>
+            <span class="tag">TeamCity</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Artifactory</span>
+            <span class="tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Cloud & Platform</h3>
+          <div class="skill-tags">
+            <span class="tag">AWS</span>
+            <span class="tag">PCF</span>
+            <span class="tag">Vault</span>
+            <span class="tag">CyberArk</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Architecture</h3>
+          <div class="skill-tags">
+            <span class="tag">Microservices</span>
+            <span class="tag">CRUD APIs</span>
+            <span class="tag">Neo4J</span>
+            <span class="tag">Arch patterns</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>People & Leadership</h3>
+          <div class="skill-tags">
+            <span class="tag">Line management</span>
+            <span class="tag">Mentoring</span>
+            <span class="tag">Talent assessment</span>
+            <span class="tag">Community building</span>
+            <span class="tag">DEI</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Agile & Delivery</h3>
+          <div class="skill-tags">
+            <span class="tag">Scrum</span>
+            <span class="tag">Jira</span>
+            <span class="tag">Confluence</span>
+            <span class="tag">ServiceNow</span>
+            <span class="tag">Stakeholder comms</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>Business & Finance</h3>
+          <div class="skill-tags">
+            <span class="tag">Xero (certified)</span>
+            <span class="tag">VAT/Corp Tax</span>
+            <span class="tag">Financial reporting</span>
+            <span class="tag">Budget management</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-inner">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">Where I've worked and what I've done</p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-date">Jan 2022<br/>Present</div>
+          <div class="timeline-body">
+            <h3>Software Engineer</h3>
+            <div class="company">NatWest Group — Engineering Platforms</div>
+            <ul>
+              <li>Designed and maintained Python automation scripts for bulk API calls across engineering tooling platforms.</li>
+              <li>Developed and deployed a CRUD microservice supporting a Neo4J database of bank applications and dependencies, managed across dev/test/prod in PCF.</li>
+              <li>Owned executive-level engineering metrics reporting and led metrics provision during a major enterprise-wide BitBucket migration.</li>
+              <li>Line managed a 2024 Software Engineering Graduate; assessor for DigitalX Engineering Intern &amp; Graduate Assessment Centres (2025/26).</li>
+              <li>Co-founded and led the EP Junior Engineering Forum; co-lead of the Lean In Circle; member of Women in Architecture &amp; Engineering working group.</li>
+              <li>Co-delivered "My First Code" — an internal reskilling programme for bank colleagues. 3rd place finalist in Challenge 22 innovation competition.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Jun 2018<br/>Jan 2022</div>
+          <div class="timeline-body">
+            <h3>Bookkeeping &amp; Digital Services</h3>
+            <div class="company">Self-Employed</div>
+            <ul>
+              <li>Delivered bookkeeping, VAT and Corporation Tax returns, and annual accounts for SMEs and sole traders.</li>
+              <li>Designed websites and digital marketing solutions, advising clients on online presence and growth strategy.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Apr 2016<br/>Jun 2018</div>
+          <div class="timeline-body">
+            <h3>Area Business Support Manager</h3>
+            <div class="company">Four Seasons Health Care</div>
+            <ul>
+              <li>Managed and supported care home administrators across 20 locations, providing training, coaching, and performance oversight.</li>
+              <li>Led compliance audits and delivered training on financial systems, budget management, and reporting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Apr 2010<br/>Apr 2016</div>
+          <div class="timeline-body">
+            <h3>Floristry Lecturer &amp; Campus Administration Manager</h3>
+            <div class="company">Capel Manor College</div>
+            <ul>
+              <li>Delivered the Level 2 Diploma in Floristry, achieving 100% qualification pass rate.</li>
+              <li>Managed campus administration, student enrolment, and stakeholder liaison.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-inner">
+      <h2 class="section-title">Education</h2>
+      <p class="section-subtitle">Qualifications and continuous learning</p>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <h4>Masters in DevOps &amp; Cloud</h4>
+          <div class="edu-org">Code First Girls</div>
+          <div class="edu-year">2021 – 2023</div>
+        </div>
+        <div class="edu-card">
+          <h4>Nanodegree — Software Engineering Stream</h4>
+          <div class="edu-org">Code First Girls</div>
+          <div class="edu-year">2021 – 2023</div>
+        </div>
+        <div class="edu-card">
+          <h4>Introduction to Data &amp; SQL</h4>
+          <div class="edu-org">Code First Girls</div>
+        </div>
+        <div class="edu-card">
+          <h4>Certified Xero Advisor &amp; Tax Specialist</h4>
+          <div class="edu-org">Xero</div>
+          <div class="edu-year">2018 – 2021</div>
+        </div>
+        <div class="edu-card">
+          <h4>Responsive Web Design Certificate</h4>
+          <div class="edu-org">freeCodeCamp</div>
+          <div class="edu-year">2019</div>
+        </div>
+        <div class="edu-card">
+          <h4>Certificate in Social Science</h4>
+          <div class="edu-org">Open University</div>
+        </div>
+        <div class="edu-card">
+          <h4>Advanced Diploma &amp; Diploma in Floristry</h4>
+          <div class="edu-org">Capel Manor College</div>
+        </div>
+        <div class="edu-card">
+          <h4>Ongoing CPD</h4>
+          <div class="edu-org">O'Reilly · DataCamp · Percipio · Workday</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <h2 class="section-title">Get in touch</h2>
+      <p class="section-subtitle">Always open to interesting conversations</p>
+      <div class="contact-links">
+        <a class="contact-item" href="mailto:tina.r.brien@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          tina.r.brien@gmail.com
+        </a>
+        <a class="contact-item" href="https://linkedin.com/in/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn
+        </a>
+        <a class="contact-item" href="https://github.com/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/>
+          </svg>
+          GitHub
+        </a>
+      </div>
+      <p style="margin-top: 1.5rem; font-size: 0.85rem; color: var(--muted);">
+        📍 Southend, Essex, UK &nbsp;·&nbsp; 📞 07956 904 499
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Tina Brien · Built with HTML &amp; CSS</p>
+  </footer>
+
+</body>
+</html>
