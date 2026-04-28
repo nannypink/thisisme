@@ -351,6 +351,24 @@
       padding: 1.1rem 1.25rem;
     }
 
+    .edu-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .edu-card.wide .edu-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem 2rem;
+    }
+
+    .edu-card.wide .edu-category {
+      margin-bottom: 0;
+    }
+
+    .edu-card.wide .edu-category strong {
+      color: var(--accent);
+    }
+
     .edu-card h4 {
       font-size: 0.9rem;
       font-weight: 700;
@@ -710,31 +728,31 @@
           <h4>Advanced Diploma &amp; Diploma in Floristry</h4>
           <div class="edu-org">Capel Manor College</div>
         </div>
-        <div class="edu-card">
+        <div class="edu-card wide">
           <h4>Ongoing CPD</h4>
-          <div class="edu-org"><strong>Technical & Engineering:</strong><br>
+          <div class="edu-content"><div class="edu-category"><strong>Technical & Engineering:</strong><br>
 • SRE Foundation – DevOps Institute | 2025<br>
 • CompTIA Linux+: Command Line & Shell Scripting – Percipio | 2025<br>
 • GitLab: CI/CD | 2025<br>
 • Cybersecurity Lab: Preventing Human Error – Percipio | 2025<br>
 • NWG CI/CD Implementation for DevOps | 2022<br>
-• Effective Decision Making in the Testing Process | 2022<br><br>
-<strong>AI, Data & Emerging Technology:</strong><br>
+• Effective Decision Making in the Testing Process | 2022</div>
+<div class="edu-category"><strong>AI, Data & Emerging Technology:</strong><br>
 • AI/ML/GenAI: Decision-Making and Critical Thinking – Percipio | 2025<br>
 • Generative AI: Guardrails, Governance & Business Impact – Percipio | 2025<br>
 • Power-up Your AI Skills (4-week) – NatWest Group | 2025<br>
 • Prompt Engineering | 2024<br>
-• Data Management Fundamentals | 2025<br><br>
-<strong>Business Analysis & Methodology:</strong><br>
+• Data Management Fundamentals | 2025</div>
+<div class="edu-category"><strong>Business Analysis & Methodology:</strong><br>
 • BABOK v3: Introduction to Business Analysis – Percipio | 2025<br>
 • Getting Started with Digital Accessibility | 2024<br>
-• Intelligent Risk Taking | 2023<br><br>
-<strong>Leadership & Professional Development:</strong><br>
+• Intelligent Risk Taking | 2023</div>
+<div class="edu-category"><strong>Leadership & Professional Development:</strong><br>
 • Determined to Lead – Level 1 – NatWest Group | 2022<br>
 • Leadercamp: How to Lead When You Don't Have All the Answers | 2026<br>
 • Introduction to Coaching | 2024<br>
 • Inspire and Influence Through Storytelling | 2025<br>
-• A Guide to Managing Technical Teams (Dave Farley, GOTO) | 2024</div>
+• A Guide to Managing Technical Teams (Dave Farley, GOTO) | 2024</div></div>
         </div>
       </div>
     </div>
